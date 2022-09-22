@@ -45,11 +45,11 @@ public class App {
 
             if (comboMoedas.getSelectedIndex() == 0) {
                 System.out.println("dolar");
-                JOptionPane.showMessageDialog(null, "o valor é " + calcularDolar(valorParseado));
+                JOptionPane.showMessageDialog(null, "o valor da conversão é R$ " + calcularDolar(valorParseado));
 
             } else if (comboMoedas.getSelectedIndex() == 1) {
                 System.out.println("euro");
-                JOptionPane.showMessageDialog(null, "o valor é " + calcularEuro(valorParseado));
+                JOptionPane.showMessageDialog(null, "o valor da conversão é R$ " + calcularEuro(valorParseado));
             } 
             //JOptionPane.showConfirmDialog(null, "sim");
 
