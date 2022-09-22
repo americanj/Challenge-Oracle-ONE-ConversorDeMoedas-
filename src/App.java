@@ -20,6 +20,8 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
+        boolean verificadora = false;
+
         JPanel panel = new JPanel(new GridBagLayout());
 
         Object[] opcao = {"Conversor de moeda", "Conversor de Temperatura(Em desenvolvimento)"};
@@ -30,35 +32,54 @@ public class App {
 
         comboBox.setSelectedIndex(0);
 
-        //JOptionPane.showMessageDialog(null, "Olá bem vindo!");
-        //JOptionPane.showMessageDialog(null, "Vamos começar a conversão?");
+        JOptionPane.showMessageDialog(null, "Olá bem vindo!");
+        JOptionPane.showMessageDialog(null, "Vamos começar a conversão?");
         JOptionPane.showMessageDialog(null, comboBox);
 
-        if (comboBox.getSelectedIndex() == 0) {
-            String numero = JOptionPane.showInputDialog("Digite um valor");
-            
-            double valorParseado = Double.parseDouble(numero);
-            
-            JOptionPane.showMessageDialog(null, "Selecione o tipo de conversão");
+        do {
+            if (comboBox.getSelectedIndex() == 0) {
+                String numero = JOptionPane.showInputDialog("Digite um valor");
 
-            JOptionPane.showMessageDialog(null, comboMoedas);
+                double valorParseado = Double.parseDouble(numero);
 
-            if (comboMoedas.getSelectedIndex() == 0) {
-                System.out.println("dolar");
-                JOptionPane.showMessageDialog(null, "o valor da conversão é R$ " + calcularDolar(valorParseado));
+                JOptionPane.showMessageDialog(null, "Selecione o tipo de conversão");
 
-            } else if (comboMoedas.getSelectedIndex() == 1) {
-                System.out.println("euro");
-                JOptionPane.showMessageDialog(null, "o valor da conversão é R$ " + calcularEuro(valorParseado));
-            } 
-            //JOptionPane.showConfirmDialog(null, "sim");
+                JOptionPane.showMessageDialog(null, comboMoedas);
 
-            //panel.add(comboBox);
-            //panel.add(comboMoedas);
-            //panel.add(botao);
-        } else {
-            JOptionPane.showMessageDialog(null, "Desculpe tente novamente");
-        }
+                if (comboMoedas.getSelectedIndex() == 0) {
+                    System.out.println("dolar");
+                    JOptionPane.showMessageDialog(null, "o valor da conversão é R$ " + calcularDolar(valorParseado));
+
+                } else if (comboMoedas.getSelectedIndex() == 1) {
+                    System.out.println("euro");
+                    JOptionPane.showMessageDialog(null, "o valor da conversão é R$ " + calcularEuro(valorParseado));
+                }
+
+                int confirma = JOptionPane.showConfirmDialog(null, "Deseja continuar ?");
+
+                switch (confirma) {
+                    case 0:
+                        verificadora = true;
+                        break;
+                    case 1:
+                        verificadora = false;
+                        JOptionPane.showMessageDialog(null, "Programa finalizado");
+                        break;
+                    case 2:
+                        verificadora = false;
+                        JOptionPane.showMessageDialog(null, "Programa concluído");
+                        System.out.println("outro");
+                        break;
+                }
+
+                panel.add(comboBox);
+                panel.add(comboMoedas);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Desculpe tente novamente");
+            }
+
+        } while (verificadora);
 
     }
 
